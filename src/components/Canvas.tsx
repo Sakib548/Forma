@@ -1,4 +1,6 @@
-// import React, { useEffect, useRef } from "react";
+
+
+import React, { useEffect, useRef } from "react";
 
 // interface CanvasProps {
 //   activeTool?: string;
@@ -9,21 +11,23 @@
 
 //   useEffect(() => {
 //     const canvas = canvasRef.current;
+
 //     if (!canvas) return;
 
 //     const ctx = canvas.getContext("2d");
+
 //     if (!ctx) return;
 
-//     // Handle high-DPI (Retina) displays
 //     const dpr = window.devicePixelRatio || 1;
+
 //     const rect = canvas.getBoundingClientRect();
 
 //     canvas.width = rect.width * dpr;
 //     canvas.height = rect.height * dpr;
+
 //     ctx.scale(dpr, dpr);
 
-//     // Initial canvas backdrop
-//     ctx.fillStyle = "#491e1e";
+//     ctx.fillStyle = "red";
 //     ctx.fillRect(0, 0, rect.width, rect.height);
 //   }, []);
 
@@ -42,16 +46,12 @@
 //   );
 // };
 
-import React, { useEffect, useRef } from "react";
+export const Canvas: React.FC = () => {
 
-interface CanvasProps {
-  activeTool?: string;
-}
-
-export const Canvas: React.FC<CanvasProps> = ({ activeTool = "select" }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
+
     const canvas = canvasRef.current;
 
     if (!canvas) return;
@@ -60,30 +60,27 @@ export const Canvas: React.FC<CanvasProps> = ({ activeTool = "select" }) => {
 
     if (!ctx) return;
 
-    const dpr = window.devicePixelRatio || 1;
+    ctx.fillStyle = "#0d99ff";
+    ctx.fillRect(50, 50, 100, 100);
 
-    const rect = canvas.getBoundingClientRect();
+    ctx.beginPath();
+    ctx.fillStyle = "red"
+    ctx.arc(100, 320, 40, 0, Math.PI * 2);
+    ctx.fill()
 
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
 
-    ctx.scale(dpr, dpr);
-
-    ctx.fillStyle = "red";
-    ctx.fillRect(0, 0, rect.width, rect.height);
-  }, []);
+  }, [])
 
   return (
-    <div style={{ flex: 1, position: "relative", overflow: "hidden" }}>
+
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }}>
+
       <canvas
         ref={canvasRef}
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "block",
-          cursor: activeTool === "select" ? "default" : "crosshair",
-        }}
-      />
+        width={500}
+        height={500}
+        style={{ backgroundColor: '#242424', borderRadius: '8px', border: '1px solid #444' }} />
+
     </div>
-  );
-};
+  )
+}
