@@ -60,16 +60,32 @@ export const Canvas: React.FC = () => {
 
     if (!ctx) return;
 
-    ctx.fillStyle = "#0d99ff";
+    //Draw a RECtangle
+
+    ctx.fillStyle = "blue";
     ctx.fillRect(50, 50, 100, 100);
 
+    //Draw an outline
+    ctx.strokeStyle = "white";
+    ctx.lineWidth = 3;
+    ctx.strokeRect(250, 50, 100, 100);
+
+    //Draw a line
     ctx.beginPath();
-    ctx.fillStyle = "red"
-    ctx.arc(100, 320, 40, 0, Math.PI * 2);
-    ctx.fill()
+    ctx.moveTo(50, 220);
+    ctx.lineTo(400, 220);
+    ctx.stroke();
+
+    //Draw a circle
+
+    ctx.beginPath();
+    ctx.fillStyle = "yellow";
+    ctx.arc(100, 320, 40, 0, 360);
+    ctx.fill();
 
 
-  }, [])
+
+  })
 
   return (
 
