@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useRef } from "react";
 
 // interface CanvasProps {
@@ -47,11 +45,9 @@ import React, { useEffect, useRef } from "react";
 // };
 
 export const Canvas: React.FC = () => {
-
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
-
     const canvas = canvasRef.current;
 
     if (!canvas) return;
@@ -80,23 +76,29 @@ export const Canvas: React.FC = () => {
 
     ctx.beginPath();
     ctx.fillStyle = "yellow";
-    ctx.arc(100, 320, 40, 0, 360);
+    ctx.arc(100, 320, 40, 0, Math.PI * 2);
     ctx.fill();
-
-
-
-  })
+  });
 
   return (
-
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }}>
-
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100%",
+      }}
+    >
       <canvas
         ref={canvasRef}
         width={500}
         height={500}
-        style={{ backgroundColor: '#242424', borderRadius: '8px', border: '1px solid #444' }} />
-
+        style={{
+          backgroundColor: "#242424",
+          borderRadius: "8px",
+          border: "1px solid #444",
+        }}
+      />
     </div>
-  )
-}
+  );
+};
