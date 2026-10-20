@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 
 // interface CanvasProps {
 //   activeTool?: string;
-// }
+/// }
 
 // export const Canvas: React.FC<CanvasProps> = ({ activeTool = "select" }) => {
 //   const canvasRef = useRef<HTMLCanvasElement | null>(null);
